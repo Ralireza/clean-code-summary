@@ -669,7 +669,7 @@ void makeSomeDangerInSoftware(){
 
 Good:
 ```java
-// TODO this function written when company doesn't pay the money
+// TODO write this function  when company doesn't pay the money
 void makeSomeDangerInSoftware(){
    
 }
