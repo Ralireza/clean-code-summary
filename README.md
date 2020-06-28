@@ -759,12 +759,13 @@ Good:
    
 Bad:
 ```java
-int a;
+/** The day of the month. */
+private int dayOfMonth;
 ```
 
 Good:
 ```java
-int daySinceModification;
+private int dayOfMonth;
 ```
 
 
