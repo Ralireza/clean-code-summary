@@ -1,4 +1,5 @@
-## Table of Content
+clean code book summary with example:
+## Table of Contents
 - [Meaningful names](#meaningful-names)
     - [Intension-Revealing Names](#intension-revealing-names)
     - [avoid disinformation](#avoid-disinformation)
