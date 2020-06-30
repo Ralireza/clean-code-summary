@@ -1142,7 +1142,7 @@ public class FitNesseServer implements SocketServer {
   
 Bad:
 ```java
-I am developer and i code what ever i want to.
+Every programmer has his own favorite formatting rules
 ```
 
 Good:
