@@ -945,25 +945,29 @@ Good:
    
 Bad:
 ```java
-int a;
+lineOfCodePerFile > 500
 ```
 
 Good:
 ```java
-int daySinceModification;
+lineOfCodePerFile < 100
 ```
 
-
+ 
 ### The Newspaper Metaphor
    
 Bad:
 ```java
-int a;
+<Not in newspaper mode>
 ```
 
 Good:
 ```java
-int daySinceModification;
+<headline>
+...
+<synopsis of the whole story>
+...
+<details increase>
 ```
 
 
@@ -971,12 +975,51 @@ int daySinceModification;
    
 Bad:
 ```java
-int a;
+package fitnesse.wikitext.widgets;
+import java.util.regex.*;
+public class BoldWidget extends ParentWidget {
+ public static final String REGEXP = "'''.+?'''";
+ private static final Pattern pattern = Pattern.compile("'''(.+?)'''",
+ Pattern.MULTILINE + Pattern.DOTALL);
+ public BoldWidget(ParentWidget parent, String text) throws Exception {
+ super(parent);
+ Matcher match = pattern.matcher(text);
+ match.find();
+ addChildWidgets(match.group(1));
+ }
+ public String render() throws Exception {
+ StringBuffer html = new StringBuffer("<b>");
+ html.append(childHtml()).append("</b>");
+ return html.toString();
+ }
+}
 ```
 
 Good:
 ```java
-int daySinceModification;
+package fitnesse.wikitext.widgets;
+
+import java.util.regex.*;
+
+public class BoldWidget extends ParentWidget {
+ public static final String REGEXP = "'''.+?'''";
+ private static final Pattern pattern = Pattern.compile("'''(.+?)'''",
+ Pattern.MULTILINE + Pattern.DOTALL
+ );
+
+ public BoldWidget(ParentWidget parent, String text) throws Exception {
+ super(parent);
+ Matcher match = pattern.matcher(text);
+ match.find();
+ addChildWidgets(match.group(1));
+ }
+
+ public String render() throws Exception {
+ StringBuffer html = new StringBuffer("<b>");
+ html.append(childHtml()).append("</b>");
+ return html.toString();
+ }
+}
 ```
 
 
@@ -984,12 +1027,29 @@ int daySinceModification;
    
 Bad:
 ```java
-int a;
+int verifyAuthentication(string userId){
+   for ...
+      if ...
+   int password;
+   for ...
+      if ...
+   ...
+   ...
+   // long distance !
+   password = 1234;
+}
 ```
 
 Good:
 ```java
-int daySinceModification;
+// declare first of function and/or class
+// because its small
+int verifyAuthentication(string userId){
+   int password;
+   for ...
+      if ...
+   password = 1234;
+}
 ```
 
 
@@ -997,12 +1057,29 @@ int daySinceModification;
    
 Bad:
 ```java
-int a;
+bool coolFunction(string nothing){
+   if(nothing.isEqual(null))
+      return true;
+
+   return false;
+}
+...
+/* long long story of code */
+...
+coolFunction("haha")
 ```
 
 Good:
 ```java
-int daySinceModification;
+bool coolFunction(string nothing){
+   if(nothing.isEqual(null))
+      return true;
+
+   return false;
+}
+coolFunction("haha")
+...
+/* long long story of code */
 ```
 
 
@@ -1010,12 +1087,18 @@ int daySinceModification;
    
 Bad:
 ```java
-int a;
+public static double calculateArea(double vertical,double horizental) {
+ double determinant=determinant(vertical,horizental);
+ return (-b+Math.sqrt(determinant))/(2*a);
+ }
 ```
 
 Good:
 ```java
-int daySinceModification;
+public static double calculateArea(double vertical, double horizental) {
+ double determinant = determinant(vertical, horizental);
+ return (-horizental + Math.sqrt(determinant)) / (2*a);
+ }
 ```
 
 
@@ -1023,12 +1106,35 @@ int daySinceModification;
    
 Bad:
 ```java
-int a;
+public class FitNesseServer implements SocketServer { private FitNesseContext
+context; public FitNesseServer(FitNesseContext context) { this.context =
+context; } public void serve(Socket s) { serve(s, 10000); } public void
+serve(Socket s, long requestTimeout) { try { FitNesseExpediter sender = new
+FitNesseExpediter(s, context);
+sender.setRequestParsingTimeLimit(requestTimeout); sender.start(); }
+catch(Exception e) { e.printStackTrace(); } } }
 ```
 
 Good:
 ```java
-int daySinceModification;
+public class FitNesseServer implements SocketServer {
+   private FitNesseContext context;
+      this.context = context;
+   }
+   public void serve(Socket s) {
+      serve(s, 10000);
+   }
+   public void serve(Socket s, long requestTimeout) {
+      try {
+         FitNesseExpediter sender = new FitNesseExpediter(s, context);
+         sender.setRequestParsingTimeLimit(requestTimeout);
+         sender.start();
+      }
+      catch (Exception e) {
+         e.printStackTrace();
+      }
+   }
+}
 ```
 
 
@@ -1036,12 +1142,13 @@ int daySinceModification;
   
 Bad:
 ```java
-int a;
+I am developer and i code what ever i want to.
 ```
 
 Good:
 ```java
-int daySinceModification;
+A team of developers should agree
+upon a single formatting style
 ```
 
 # Error Handeling
