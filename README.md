@@ -1156,60 +1156,128 @@ upon a single formatting style
    
 Bad:
 ```java
-int a;
+errno value       Error
+1             /* Operation not permitted */
+2             /* No such file or directory */
+3             /* No such process */
+4             /* Interrupted system call */
+5             /* I/O error */
+6             /* No such device or address */
+7             /* Argument list too long */
+8             /* Exec format error */
+9             /* Bad file number */
+10            /* No child processes */
+11            /* Try again */
+12            /* Out of memory */
+13            /* Permission denied */
 ```
 
 Good:
 ```java
-int daySinceModification;
+public void sendShutDown() {
+  try {
+    tryToShutDown();
+  } catch (DeviceShutDownError e) {
+    logger.log(e);
+}
+private void tryToShutDown() throws DeviceShutDownError {
+  // ..
+}
 ```
 
 ### Write Your Try-Catch-Finally Statement First
    
 Bad:
 ```java
-int a;
+int main(){
+   // code
+}
 ```
 
 Good:
 ```java
-int daySinceModification;
+try {
+    int main(){
+      // code
+
+   }
+  } catch (Error e) {
+    logger.log(e);
+  }
+
 ```
 
 ### Provide Context with Exceptions
    
 Bad:
 ```java
-int a;
+public void sendShutDown() {
+  try {
+    tryToShutDown();
+  } catch (DeviceShutDownError e) {
+    logger.log("some error occured !");
+}
+private void tryToShutDown() throws DeviceShutDownError {
+  // ..
+}
 ```
 
 Good:
 ```java
-int daySinceModification;
+public void sendShutDown() {
+  try {
+    tryToShutDown();
+  } catch (DeviceShutDownError e) {
+    logger.log(class.name + function.name + e);
+}
+private void tryToShutDown() throws DeviceShutDownError {
+  // ..
+}
 ```
 
 ### Don’t Return Null
    
 Bad:
 ```java
-int a;
-```
+List<Employee> employees = getEmployees();
+if (employees != null) {
+ for(Employee e : employees) {
+   totalPay += e.getPay();
+ }
+}
 
 Good:
 ```java
-int daySinceModification;
+public List<Employee> getEmployees() {
+ if( .. there are no employees .. )
+   return Collections.emptyList();
+   // or throw an exception
+}
 ```
 
 ### Don’t Pass Null
   
 Bad:
 ```java
-int a;
+public class MetricsCalculator
+{
+ public double xProjection(Point p1, Point p2) {
+   return (p2.x – p1.x) * 1.5;
+ }
+ …
+}
 ```
 
 Good:
 ```java
-int daySinceModification;
+public class MetricsCalculator
+{
+   public double xProjection(Point p1, Point p2) {
+      assert p1 != null : "p1 should not be null";
+      assert p2 != null : "p2 should not be null";
+      return (p2.x – p1.x) * 1.5;
+   }
+}
 ```
 
 # Boundaries
