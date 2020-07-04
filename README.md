@@ -62,7 +62,6 @@ clean code book summary with example:
 - [Boundaries](#boundaries)
     - [Using Third-Party Code](#using-third-party-code)
     - [Exploring and Learning Boundaries](#exploring-and-learning-boundaries)
-    - [Learning Tests Are Better Than Free](#learning-tests-are-better-than-free)
     - [Using Code That Does Not Yet Exist](#using-code-that-does-not-yet-exist)
     - [Clean Boundaries](#clean-boundaries)
 - [Unit Tests](#unit-tests)
@@ -364,16 +363,15 @@ Bad:
 ```csharp
 getUserInfo()
 getName()
-getLastSeen()
 getDataFromServer()
 ```
 
 Good:
 ```csharp
-getName()
-getLastSeen()
-getUserInfo()
 getDataFromServer()
+getUserInfo()
+getName()
+
 
 ```
 
@@ -1285,60 +1283,69 @@ public class MetricsCalculator
    
 Bad:
 ```java
-int a;
+Map sensors = new HashMap();
+Sensor s = (Sensor)sensors.get(sensorId);
 ```
 
 Good:
 ```java
-int daySinceModification;
+public class Sensors {
+   private Map sensors = new HashMap();
+
+   public Sensor getById(String id) {
+      return (Sensor) sensors.get(id);
+}
+
+}
 ```
 
 ### Exploring and Learning Boundaries
    
 Bad:
 ```java
-int a;
+import superComputer
+
+superComputer.solve()
 ```
 
 Good:
 ```java
-int daySinceModification;
+import superComputer
+
+@test
+...
+@test
+...
+
 ```
 
-### Learning Tests Are Better Than Free
-   
-Bad:
-```java
-int a;
-```
-
-Good:
-```java
-int daySinceModification;
-```
 
 ### Using Code That Does Not Yet Exist
    
 Bad:
 ```java
-int a;
+// stop development 
 ```
 
 Good:
 ```java
-int daySinceModification;
+interface pendingModule()
+interface fakeApi()
+
 ```
 
 ### Clean Boundaries
   
 Bad:
 ```java
-int a;
+if (third-party == 'changed')
+   change(wholeSoftware)
 ```
 
 Good:
 ```java
-int daySinceModification;
+if (third-party == 'changed')
+   change(surviveSoftwareWithoutBigChange)
 ```
 
 # Unit Tests
