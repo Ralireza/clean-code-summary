@@ -1353,48 +1353,61 @@ if (third-party == 'changed')
    
 Bad:
 ```java
-int a;
+write test and write test
 ```
 
 Good:
 ```java
-int daySinceModification;
+unitTest() -> failedUnitTest() -> makeCodeBetter() -> isUnitTestFail() -> production() -> makeMoney()
 ```
 
 ### Clean Tests
    
 Bad:
 ```java
-int a;
+// just write test, and lose them
 ```
 
 Good:
 ```java
-int daySinceModification;
+// keep it clean, make it readable!
 ```
 
 ### One Assert per test
    
 Bad:
 ```java
-int a;
+@Test
+testPainMaximization(){
+   if(lifeExistance)
+      return true;
+   
+   if(isDeveloper)
+      return true;
+
+}  
 ```
 
 Good:
 ```java
-int daySinceModification;
+@Test
+testLifeExistance()
+
+@Test
+testIsDeveloper()
+
 ```
 
 ### F.I.R.S.T
   
-Bad:
-```java
-int a;
-```
 
 Good:
 ```java
-int daySinceModification;
+Fast()
+Independient() 
+Repeatable() // any env
+SelfValidating() // return true || false
+Timely() // write befor production
 ```
 
 # Classes
@@ -1402,36 +1415,58 @@ int daySinceModification;
    
 Bad:
 ```java
-int a;
+// make all things private 
+// fanatic about encapsulation 
 ```
 
 Good:
 ```java
-int daySinceModification;
+// make protected something
+// access by a test
 ```
 
 ### Classes Should be Small
    
 Bad:
 ```java
-int a;
+public class longBoringStory(){
+
+   ...
+   too many methods 
+   ....
+}
 ```
 
 Good:
 ```java
-int daySinceModification;
+public class shortCoolStory(){
+
+   public void tellMeStory(){
+
+   }
+}
 ```
 
 ### The Single Responsibility Principle
    
 Bad:
 ```java
-int a;
+public class SuperSuperResponsibility(){
+
+   ...
+   too many methods 
+   ....
+}
 ```
 
 Good:
 ```java
-int daySinceModification;
+public class cleanSingleResponsibility(){
+
+   public void iAmCleanYouKnow(){
+      
+   }
+}
 ```
 
 
@@ -1439,12 +1474,33 @@ int daySinceModification;
    
 Bad:
 ```java
-int a;
+public class longBoringStory(){
+
+  string story;
+  string character;
+  string word;
+  string page;
+  srting time;
+  ...
+  devilManipulator(string story, string character, 
+  string word,   string page,   srting time ){
+
+  }
+}
 ```
 
 Good:
 ```java
-int daySinceModification;
+public class ShortStory(){
+
+  string story;
+  string character;
+
+  ...
+  tellStory(string story, string character ){
+
+  }
+}
 ```
 
 
@@ -1452,12 +1508,23 @@ int daySinceModification;
    
 Bad:
 ```java
-int a;
+public class BigClassDoEveryThing(){
+
+}
 ```
 
 Good:
 ```java
-int daySinceModification;
+public class Cool(){
+   
+}
+public class Small(){
+   
+}
+public class Class(){
+   
+}
+
 ```
 
 
@@ -1465,11 +1532,11 @@ int daySinceModification;
   
 Bad:
 ```java
-int a;
+// no abstraction just implement to work and make money
 ```
 
 Good:
 ```java
-int daySinceModification;
+// use interfaces and design in multiLayer abstraction
 ```
 
