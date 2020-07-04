@@ -1,6 +1,6 @@
 clean code book summary with example:
 ## Table of Contents
-- [Meaningful names](#meaningful-names)
+- [## Meaningful names](#meaningful-names)
     - [Intension-Revealing Names](#intension-revealing-names)
     - [avoid disinformation](#avoid-disinformation)
     - [Meaningful Distinction](#meaningful-distinction)
