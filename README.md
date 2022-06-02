@@ -1,4 +1,4 @@
-## persian presentation on youtube:
+## Persian presentation on youtube:
 [clean code - MrBug](https://youtu.be/ah3LoMeRQA4)
 ## Table of Contents
 - [Meaningful names](#meaningful-names)
